@@ -4,10 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>নুর জাহান কম্পিউটার একাডেমী - রমজান সময়সূচী</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: #fff;
+            text-align: center;
+        }
+        header {
+            background: linear-gradient(135deg, #2980b9, #2c3e50);
+            padding: 20px;
+        }
+        .hero {
+            padding: 50px;
+            background: url('background.jpg') no-repeat center center/cover;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #ff5722, #ff9800);
+            color: #fff;
+            padding: 14px 22px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .schedule {
+            padding: 30px;
+        }
+        table {
+            width: 90%;
+            margin: auto;
+            border-collapse: collapse;
+            background: #fff;
+            color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background: #00796b;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f1f1f1;
+        }
+        tr:hover {
+            background: #009688;
+            color: white;
+        }
+        .profile-container {
+            margin-top: 30px;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #ffcc00;
+        }
+        footer {
+            background: #006400;
+            padding: 12px;
+            margin-top: 20px;
+        }
+        #searchInput {
+            width: 80%;
+            max-width: 400px;
+            padding: 12px;
+            font-size: 1.2em;
+            border: 2px solid #009688;
+            border-radius: 8px;
+            text-align: center;
+            margin: 20px auto;
+            display: block;
+        }
+    </style>
 </head>
 <body>
-   <header>
+    <header>
         <h1>🌙 নুর জাহান কম্পিউটার একাডেমী 🌙</h1>
         <p>✨ রমজানুল মোবারক! আল্লাহ আমাদের রোজা কবুল করুন। ✨</p>
     </header>
@@ -20,16 +99,15 @@
 
     <section id="schedule" class="schedule">
         <h2>চট্টগ্রাম জেলার ৩০ দিনের ইফতার ও সেহরির সময়সূচী</h2>
-
-        <!-- 🔍 সার্চ বক্স -->
         <input type="text" id="searchInput" placeholder="🔍 দিন লিখুন (যেমন: ৫ম রমজান)" onkeyup="searchSchedule()">
-
         <table id="scheduleTable">
-            <tr>
-                <th>দিন</th>
-                <th>সেহরির শেষ সময়</th>
-                <th>ইফতার সময়</th>
-            </tr>
+            <thead>
+                <tr>
+                    <th>দিন</th>
+                    <th>সেহরির শেষ সময়</th>
+                    <th>ইফতার সময়</th>
+                </tr>
+            </thead>
             <tbody id="tableBody">
                 <!-- এখানে ৩০ দিনের ডাটা আসবে -->
             </tbody>
@@ -46,6 +124,42 @@
         <p>&copy; 2025 নুর জাহান কম্পিউটার একাডেমী | রমজান স্পেশাল</p>
     </footer>
 
-    <script src="script.js"></script>
+    <script>
+        const scheduleData = [
+            { day: "১ম রমজান", sehri: "৪:৪৫ AM", iftar: "৬:৩০ PM" },
+            { day: "২য় রমজান", sehri: "৪:৪৪ AM", iftar: "৬:৩০ PM" },
+            { day: "৩য় রমজান", sehri: "৪:৪৩ AM", iftar: "৬:৩১ PM" },
+            { day: "৪র্থ রমজান", sehri: "৪:৪২ AM", iftar: "৬:৩১ PM" },
+            { day: "৫ম রমজান", sehri: "৪:৪১ AM", iftar: "৬:৩২ PM" },
+            { day: "৬ষ্ঠ রমজান", sehri: "৪:৪০ AM", iftar: "৬:৩২ PM" },
+            { day: "৭ম রমজান", sehri: "৪:৩৯ AM", iftar: "৬:৩৩ PM" },
+            { day: "৮ম রমজান", sehri: "৪:৩৮ AM", iftar: "৬:৩৩ PM" },
+            { day: "৯ম রমজান", sehri: "৪:৩৭ AM", iftar: "৬:৩৪ PM" },
+            { day: "১০ম রমজান", sehri: "৪:৩৬ AM", iftar: "৬:৩৪ PM" },
+            { day: "১১ম রমজান", sehri: "৪:৩৫ AM", iftar: "৬:৩৫ PM" },
+            { day: "১২ম রমজান", sehri: "৪:৩৪ AM", iftar: "৬:৩৫ PM" },
+            { day: "১৩ম রমজান", sehri: "৪:৩৩ AM", iftar: "৬:৩৬ PM" },
+            { day: "১৪ম রমজান", sehri: "৪:৩২ AM", iftar: "৬:৩৬ PM" },
+            { day: "১৫ম রমজান", sehri: "৪:৩১ AM", iftar: "৬:৩৭ PM" },
+            { day: "১৬ম রমজান", sehri: "৪:৩০ AM", iftar: "৬:৩৭ PM" },
+            { day: "১৭ম রমজান", sehri: "৪:২৯ AM", iftar: "৬:৩৮ PM" },
+            { day: "১৮ম রমজান", sehri: "৪:২৮ AM", iftar: "৬:৩৮ PM" },
+            { day: "১৯ম রমজান", sehri: "৪:২৭ AM", iftar: "৬:৩৯ PM" },
+            { day: "২০ম রমজান", sehri: "৪:২৬ AM", iftar: "৬:৩৯ PM" },
+        ];
+
+        const tableBody = document.getElementById("tableBody");
+        scheduleData.forEach(({ day, sehri, iftar }) => {
+            tableBody.innerHTML += `<tr><td>${day}</td><td>${sehri}</td><td>${iftar}</td></tr>`;
+        });
+
+        function searchSchedule() {
+            let input = document.getElementById("searchInput").value.toLowerCase();
+            let rows = document.querySelectorAll("#scheduleTable tbody tr");
+            rows.forEach(row => {
+                row.style.display = row.innerText.toLowerCase().includes(input) ? "" : "none";
+            });
+        }
+    </script>
 </body>
 </html>
